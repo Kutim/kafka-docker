@@ -26,7 +26,7 @@ RUN apt-get update -y \
   && tar xfz /tmp/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz -C /opt \
   && rm /tmp/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz \
   && ln -s /opt/kafka_${SCALA_VERSION}-${KAFKA_VERSION} ${KAFKA_HOME} \
-  && rm /tmp/* \
+  && rm -rf /tmp/* \
   && rm -rf /var/lib/apt/lists/*
 COPY overrides /opt/overrides
 
