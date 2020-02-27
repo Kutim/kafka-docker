@@ -1,4 +1,4 @@
-FROM kutim/openjdk
+FROM kutim/openjdk:8-stretch
 
 ARG kafka_version=2.4.0
 ARG scala_version=2.12
