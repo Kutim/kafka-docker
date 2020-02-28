@@ -1,11 +1,11 @@
 version: '2'
 services:
   zookeeper:
-    image: wurstmeister/zookeeper
+    image: kutim/zookeeper:3.4.14
     ports:
       - "2181:2181"
   kafka:
-    build: .
+    image: kutim/kafka:8-stretch
     ports:
       - "9092"
     environment:
@@ -13,3 +13,12 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+  cmak:
+    image: kutim/cmak:3.0.0.2
+    ports:
+      - "18007:9000"
+    environment:
+      ZK_HOSTS: zookeeper:2181
+      KAFKA_MANAGER_AUTH_ENABLED: "true"
+      KAFKA_MANAGER_USERNAME: admin
+      KAFKA_MANAGER_PASSWORD: password
